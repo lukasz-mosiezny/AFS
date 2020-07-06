@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AFS_Rekrutacja.Models.Sentences>
+
+@{
+    ViewBag.Title = "Sentences";
+}
+
+<h2>All Sentences</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayName("Translated text")
+        </th>
+        <th>
+            @Html.DisplayName("Translation name")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TranslatedText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Translations.TranslationName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
